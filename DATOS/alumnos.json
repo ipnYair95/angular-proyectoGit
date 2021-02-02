@@ -1,0 +1,128 @@
+[
+	{
+		"nombre" : "Mateo",
+		"apePaterno" : "Arvizu",
+		"apeMaterno" : "Sanchez",
+		"fechaNacimiento" : "2013-06-09",
+		"curp" : "AISM130609HMCRNTA6"
+	},
+	
+	{
+		"nombre" : "Emily Yunuhem",
+		"apePaterno" : "Ayala",
+		"apeMaterno" : "Reyes",
+		"fechaNacimiento" : "2013-08-26",
+		"curp" : "AARE130826MMCYYMA4"
+	},
+	
+	{
+		"nombre" : "Santiago",
+		"apePaterno" : "Campos",
+		"apeMaterno" : "Saldaña",
+		"fechaNacimiento" : "2013-08-10",
+		"curp" : "CASS130810HMCMLNA9"
+	},
+	
+	{
+		"nombre" : "Bianca Zoe",
+		"apePaterno" : "Garcia",
+		"apeMaterno" : "Alonso",
+		"fechaNacimiento" : "2013-01-12",
+		"curp" : "GAAB130112MMCRLNA0"
+	},
+	
+	{
+		"nombre" : "Mateo Ariel",
+		"apePaterno" : "Lopez",
+		"apeMaterno" : "Lorenzo",
+		"fechaNacimiento" : "2013-03-09",
+		"curp" : "LOLM130309HMCPRTA0"
+	},
+	
+	{
+		"nombre" : "Eder Sebastian",
+		"apePaterno" : "Reyes",
+		"apeMaterno" : "Ramirez",
+		"fechaNacimiento" : "2013-05-22",
+		"curp" : "RERE130522HDFYMDA5"
+	},
+	
+	{
+		"nombre" : "Jorge",
+		"apePaterno" : "Ursula",
+		"apeMaterno" : "Jimenez",
+		"fechaNacimiento" : "2013-06-13",
+		"curp" : "UUJJ130621HMCRMRA4"
+	}
+
+	
+]
+
+////////// 
+
+{
+    
+    "nombre": "Perez",
+    "apePaterno": "Jose ALFREDO",
+    "apeMaterno": "sdfdsfff",
+    "fechaNacimiento": "2013-08-10T00:00:00.000+00:00",
+    "curp": "CASS130810HMCMLNA9",
+    "sexo": "Hombre",
+    "peso": 234,
+    "estatura": "1.23",
+    "tipoSangre": "AB-",
+    "usaLentes": true,
+    "domicilio": {
+
+        "estado": "México",
+        "municipio": "Toluca",
+        "codigoPostal": "50000",
+        "colonia": "Centro",
+        "exterior": "ext",
+        "interior": "int",
+        "entreCalles": "huizilopoz",
+        "referencia": "dfer"
+    },
+    "tutores": []
+}
+
+
+////////// valido
+
+{
+    "nombre": "Mateo",
+    "apeMaterno": "Arvizu",
+    "apePaterno": "Sanchez",
+    "curp": "AISM130609HMCRNTA6",
+    "fechaNacimiento": "2013-06-09",
+    "sexo": "Masculino",
+    "estatura": "23",
+    "peso": "35",
+    "tipoSangre": "O+",
+    "domicilio": {
+        "estado": "México",
+        "municipio": "Toluca",
+        "codigoPostal": "50000",
+        "colonia": "Centro",
+        "exterior": "ext",
+        "interior": "int",
+        "entreCalles": "huizilopoz",
+        "referencia": "dfer"
+    },
+    "tutores": [
+        {
+            "nombre": "Edgar",
+            "apeMaterno": "Marin",
+			"apePaterno": "Alavez",
+			"edoCivil": "Casado",
+			"curp": "MAAE950608HMCRLD00",
+			"fechaNacimiento": "1995-06-08",
+			"sexo": "Masculino",
+			"parentesco": "Padre",
+			"ocupacion": "Casa",
+			"telefono" : "898-8989",
+			"email" : "correo@mail.com"
+
+        }
+    ]
+}

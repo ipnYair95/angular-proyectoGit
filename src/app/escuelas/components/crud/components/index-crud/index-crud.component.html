@@ -1,0 +1,66 @@
+<mat-card>
+
+  <mat-card-title>
+    <div class="centerContent">
+      LISTADO DE CCT
+    </div>
+  </mat-card-title>
+
+  <div class = "centerContent" >
+      CCTS EXISTENTES
+  </div>
+
+  <div style="text-align: right; margin-bottom: 15px;" >
+    <button class="btn btn-primary" [routerLink]="['../crear']" >
+        <i class="fa fa-plus" aria-hidden="true"> Crear CCT </i>
+    </button>
+  </div>
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="index">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> No. </th>
+      <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="CCT">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> CCT </th>
+      <td class="centerContent" mat-cell *matCellDef="let element"> {{element.cct}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nombre">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> NOMBRE DE LA ESCUELA </th>
+      <td class="centerContent" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> EDITAR </th>
+      <td class="centerContent" mat-cell *matCellDef="let element">
+        <button mat-stroked-button color="accent" [routerLink]="['../editar', element.id ]">
+          <i class="fa fa-pencil fa-lg" aria-hidden="true">  </i>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="niveles">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> VER NIVELES </th>
+      <td class="centerContent" mat-cell *matCellDef="let element">
+        <button mat-stroked-button color="primary" [routerLink]="['../nivel', element.id ]">
+          <i class="fa fa-eye fa-lg" aria-hidden="true">  </i>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+</mat-card>

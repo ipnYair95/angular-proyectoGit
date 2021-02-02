@@ -1,0 +1,42 @@
+<div class="text-right mt-3 mb-3">
+  <button class="btn btn-outline-warning" (click)="descargarReporte()" >
+    <i class="fa fa-download" aria-hidden="true"> Descargar Lista </i>
+  </button>
+</div>
+
+<div class="alert alert-primary" role="alert" *ngIf=" alumnos.length == 0" >
+  <strong> No existen alumnos en la base de datos </strong>
+</div>
+
+<div class="table-responsive"  *ngIf=" alumnos.length > 0">
+  <table class="table centerText table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th> N.P. </th>
+        <th> Apellido Paterno </th>
+        <th> Apellido Materno </th>
+        <th> Nombre </th>
+        <th> CURP </th>
+        <th> Nacimiento </th>
+        <th> Sexo </th>
+        <th> Ficha personal  </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of sortBy('apePaterno'); let i = index">
+        <td> {{ i+1 }} </td>
+        <td> {{ alumno.apePaterno}} </td>
+        <td> {{ alumno.apeMaterno }} </td>
+        <td> {{ alumno.nombre }} </td>
+        <td> {{ alumno.curp }} </td>
+        <td> {{ alumno.fechaNacimiento | date: 'dd/MM/yyyy' }} </td>
+        <td> {{ alumno.sexo }} </td>
+        <td>
+          <button class="btn btn-success" (click)="descargarReporteAlumno( alumno.id )" >
+              <i class="fa fa-id-card" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

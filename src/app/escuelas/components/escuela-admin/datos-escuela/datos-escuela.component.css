@@ -1,0 +1,51 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+mat-form-field {
+  font-size: 20px;
+  margin-right: 5%;
+  width: 45%;
+}
+
+.main-div{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-right{
+  text-align: right;
+  margin: 15px;
+}
+ 
+
+table {
+  width: 100%;
+  text-align: center;
+  border-width: 3px;
+  border-style: solid;
+  border-color: lightsteelblue;
+}
+
+th.mat-header-cell{
+  text-align: center;
+  font-size: large;
+}
+
+mat-card{
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: lightsteelblue;
+}

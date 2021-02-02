@@ -1,0 +1,354 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Datos del alumno</h1>
+  </div>
+  <div class="card-body">
+    <form autocomplete="off" [formGroup]="forma">
+      <!-- ************** GENERALES **************** -->
+
+      <div>
+
+        <div *ngIf="paginas === 0">
+
+          <div class="form-row">
+            <h2 class="mb-3">Generales</h2>
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Nombre</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('nombre')">
+                Campo requerido
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Ape. Paterno</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Ape. Paterno" formControlName="apePaterno" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('apePaterno')">
+                Campo requerido
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Ape. Materno</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Ape. Materno" formControlName="apeMaterno"/>
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('apeMaterno')">
+                Campo requerido
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> CURP</span>
+                </div>
+                <input type="text" class="form-control" placeholder="CURP" formControlName="curp" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('curp')">
+                FORMATO NO VALIDO
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Nacimiento</span>
+                </div>
+                <input disabled type="text" [value]="nacimiento" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Sexo</span>
+                </div>
+                <input disabled type="text" [value]="sexo" class="form-control" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <h2 class="mb-3">Medico Generales</h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Peso( Kg ) </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Peso entero ( Kg ) " formControlName="peso" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('peso')">
+                Formato requerido: 56
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Estatura ( cm ) </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Estatura ( cm ) " formControlName="estatura" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('estatura')">
+                Formato requerido: 1.72
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="form-group col">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> Tipo de sangre </span>
+                  </div>
+                  <select class="form-control" formControlName="sangreLista">
+                    <option [ngValue]="sangre" *ngFor="let sangre of sangres">
+                      {{ sangre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="form-group col">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> ¿ Usa lentes ? </span>
+                  </div>
+                  <select class="form-control" formControlName="lentesLista">
+                    <option [ngValue]="lentes" *ngFor="let lentes of lentesA">
+                      {{ lentes }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ************** DOMICILIO **************** -->
+
+      <div>
+        <div *ngIf="paginas === 1" formGroupName="domicilio">
+          <div class="form-row">
+            <h2 class="mb-3">Domicilio</h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Estado </span>
+                </div>
+                <select class="form-control" (change)="cambioEstado()" formControlName="estadoLista">
+                  <option [ngValue]="estado" *ngFor="let estado of sort(estados.response.estado)">
+                    {{ estado }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Municipio </span>
+                </div>
+                <select class="form-control" (change)="cambioMunicipio()" formControlName="municipioLista">
+                  <option [ngValue]="municipio" *ngFor="let municipio of sort(municipios.response.municipios)">
+                    {{ municipio }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> C.P. </span>
+                </div>
+                <select class="form-control" (change)="cambioPostal()" formControlName="postalLista">
+                  <option [ngValue]="postal" *ngFor="let postal of sort(postales.response.cp)">
+                    {{ postal }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Colonia </span>
+                </div>
+                <select class="form-control" formControlName="coloniaLista">
+                  <option [ngValue]="colonia" *ngFor="let colonia of colonias.response.colonia">
+                    {{ colonia }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Exterior</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Exterior" formControlName="exterior" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('domicilio.exterior')">
+                Campo requerido
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Interior</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Interior" formControlName="interior" />
+              </div>
+              <div class="alert alert-primary" *ngIf="campoInvalido('domicilio.interior')">
+                Campo requerido
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Entre calles</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Entre calles" formControlName="entreCalles" />
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> Referencia</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Referencia" formControlName="referencia"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" (change)="omiteDomicilio($event)" />
+                <label class="form-check-label" for="defaultCheck1">
+                  ¿Omitir campos?
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ************** TUTOR **************** -->
+
+      <div>
+        <div *ngIf="paginas === 2" formGroupName="domicilio">
+          <div class="form-row">
+            <h2 class="mb-3"> Padre o tutor </h2>
+          </div>
+
+          <div class="text-right mb-3">
+            <a (click)="agregarTutor()" class="btn btn-primary">
+              Agregar un tutor
+            </a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered centerText" *ngIf="alumno.tutores.length > 0">
+              <thead class="thead-dark">
+                <tr>
+                  <th> Nombre completo </th>
+                  <th> Parentesco </th>
+                  <th> ¿A cargo del alumno? </th>
+                  <th> Editar </th>
+                  <th> Eliminar  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tutor of alumno.tutores; let i = index ">
+                  <th scope="row"> {{ tutor.apePaterno + " " + tutor.apeMaterno + " " + tutor.nombre }} </th>
+                  <th> {{ tutor.parentesco }} </th>
+                  <th>
+                    <div class="text-success" >
+                      <i class="fa fa-check-circle fa-2x" *ngIf="tutor.esResponsable"> </i>
+                    </div>
+                    <div class="text-danger">
+                      <i class="fa fa-times-circle fa-2x" *ngIf="!tutor.esResponsable"> </i>
+                    </div>
+                  </th>
+                  <th>
+                    <button class="btn btn-success" (click)="agregarTutor( i )">
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                  </th>
+                  <th>
+                    <button class="btn btn-danger" (click)="eliminarTutor( i )" > 
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>                    
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+  
+            <div class="alert alert-success" *ngIf="alumno.tutores.length == 0">
+              No existen tutores asignados
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+
+    <!-- ************** BOTONES **************** -->
+
+
+    <div class="col-md-12 text-center">
+      <div class="btn-group btn-group-lg blocks flex-wrap">
+        <button type="button" (click)="atras()" [disabled]="paginas === 0" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left"> Anterior </i>
+        </button>
+
+        <button type="button" (click)="adelante()" [disabled]="paginas === 2" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-right"> Siguiente </i>
+        </button>
+
+        <button type="button" (click)="crear()" class="btn btn-outline-primary text-right">
+          <i class="fas fa-save"> Guardar </i>
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+</div>

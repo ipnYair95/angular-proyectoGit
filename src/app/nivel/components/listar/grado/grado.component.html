@@ -1,0 +1,161 @@
+<button [routerLink]="['listar']" class="btn btn-primary">
+  <i class="fa fa-arrow-left" aria-hidden="true"> Atras </i>
+</button>
+
+<div class="text-center">
+  <h1> Ciclo Escolar: {{ cicloEscolar.nombreCiclo }} </h1>
+  <h2 class="text-right"> Nivel: {{ nivel }} </h2>
+  <h2> Carrera: {{ carrera }} </h2>
+</div>
+
+<br>
+<br>
+
+<div class="text-center">
+  <span>
+    <h3>
+      <i class="fa fa-hourglass-start mr-5" aria-hidden="true"> Inicio: {{ cicloEscolar.fechaInicio | date: 'fullDate'}}
+      </i>
+      <i class="fa fa-hourglass-end" aria-hidden="true"> Termino: {{ cicloEscolar.fechaTermino | date: 'fullDate' }}
+      </i>
+    </h3>
+  </span>
+</div>
+
+<br>
+
+<!-- usamos la forma con ngif porque puede venir la forma sin poblar y causa error -->
+<form [formGroup]="forma" *ngIf="forma">
+  <hr>
+
+  <div class="text-right mb-3">
+
+    <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseAgregar" aria-expanded="false"
+      aria-controls="collapseAgregar">
+      <i class="fa fa-plus" aria-hidden="true"> Agregar periodo o grado </i>
+    </button>
+
+    <div class="collapse mt-3" id="collapseAgregar">
+
+      <form autocomplete="off" [formGroup]="forma">
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> Nombre del grado</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Nombre del grado" formControlName="nombreGradoAgregar" />
+          <!-- {{ forma.get('nombreGradoAgregar').value }} -->
+          <button class="btn btn-success ml-2" (click)="crear()">
+            <i class="fas fa-save    "> Guardar </i>
+          </button>
+
+        </div>
+
+        <div *ngIf="getValidity( 'nombreGradoAgregar' )">
+          <div class="alert alert-primary" role="alert">
+            <strong> "Formato numero ordinal con periodo Ej: 1° Grado o 1° Semestre" </strong>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <hr>
+
+
+
+
+  <div formArrayName="gradosLista">
+
+    <div *ngFor="let grado of  getListaAsArray.controls; let i = index ">
+
+      <div [formGroupName]="i">
+        <span>
+          <br>
+          <h3> {{ grado.value.nombreGrado }} </h3>
+
+          <button class="btn btn-outline-success mr-3" (click)="editarGradoActivated( i )" data-toggle="collapse"
+            [attr.data-target]="'#collapseEditar-' + i" [attr.aria-expanded]="false"
+            [attr.aria-controls]="'collapseEditar-' + i" *ngIf="  !grado.value.disable ">
+            <i class="fa fa-pencil" aria-hidden="true"> Editar </i>
+          </button>
+
+          <button class="btn btn-outline-danger mr-3" (click)="eliminar( i ) ">
+            <i class="fa fa-trash" aria-hidden="true"> Eliminar </i>
+          </button>
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" [attr.data-target]="'#collapse-' + i"
+            [attr.aria-expanded]="false" [attr.aria-controls]="'collapse-' + i">
+            Ver asignaturas
+          </button>
+
+        </span>
+
+        <div class="collapse mt-3" [attr.id]="'collapseEditar-' + i" *ngIf="  grado.value.disable ">
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Nombre del grado</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Nombre del grado" formControlName="nombreGrado" />
+
+            <button class="btn btn-success ml-2" (click)="crear(i)">
+              <i class="fas fa-save    "> Guardar </i>
+            </button>
+
+            <button class="btn btn-secondary ml-2" (click)="cancelar(i)">
+              <i class="fas fa-cancel    "> Cancelar </i>
+            </button>
+
+          </div>
+
+          <div *ngIf="getValiditySubForm( i , 'nombreGrado' )">
+            <div class="alert alert-primary" role="alert">
+              <strong> "Formato numero ordinal con periodo Ej: 1° Grado o 1° Semestre" </strong>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="collapse" [attr.id]="'collapse-' + i">
+
+          <div class="text-right mb-3">
+            <button class="btn btn-outline-primary" (click)="editarAsignatura( i )">
+              <i class="fa fa-plus" aria-hidden="true"> Agregar asignatura </i>
+            </button>
+          </div>
+
+          <div class="card card-body">
+            <div class="table-responsive">
+              <table class="table centerText table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+                    <th> # </th>
+                    <th> Asignatura </th>
+                    <th> Editar </th> 
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr *ngFor="let asignatura of cicloEscolar.grados[i].asignaturas; let j = index ">
+                    <td> {{ j+1 }} </td>
+                    <td> {{ asignatura.nombreAsignatura }}  </td>
+                    <td>
+                      <button class="btn btn-outline-success mr-3"  (click)="editarAsignatura( i, j )">
+                        <i class="fa fa-pencil" aria-hidden="true"> Editar </i>
+                      </button>
+                    </td> 
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div> <!-- termino form group name -->
+    </div>
+
+  </div>
+</form>

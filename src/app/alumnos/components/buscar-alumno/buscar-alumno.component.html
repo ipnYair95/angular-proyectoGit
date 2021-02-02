@@ -1,0 +1,75 @@
+<div class="container">
+
+    <div class="card border-primary">
+
+        <div class="card-header">
+            <h1> {{ titulo }} </h1>
+        </div>
+
+        <div class="card m-2">
+            <div class="card-body">
+                <h5 class="card-title"> Búsqueda por: </h5>
+                <ul>
+                    <li> <b> CURP: </b> XEXX010101HNEXXXA4 </li>
+                    <li> <b> Apellido materno o paterno (sin acentos): </b> RAMIREZ </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group m-3">
+            <div class="input-group-prepend flex-wrap ">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Escoja el tipo de busqueda
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="porCurp( txtBuscar.value )"> Por CURP </a>
+                    <a class="dropdown-item" (click)="porApellido( txtBuscar.value  )"> Por apellido </a>
+                </div>
+                <input #txtBuscar type="text" class="form-control"
+                    aria-label="Text input with segmented dropdown button">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="table-responsive mt-3">
+    <table class="table table-bordered centerText" *ngIf="alumnos.length != 0">
+        <thead class="thead-dark">
+            <tr>
+                <th>  # </th>
+                <th> Apellido Paterno </th>
+                <th> Apellido Materno </th>
+                <th> Nombre </th>
+                <th> CURP </th>
+                <th>
+                    Editar
+                </th>
+                <th> Eliminar </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alumno of alumnos; let i = index">
+                <td> {{ i+1 }} </td>
+                <td> {{ alumno.apePaterno}} </td>
+                <td> {{ alumno.apeMaterno }} </td>
+                <td> {{ alumno.nombre }} </td>
+                <td> {{ alumno.curp }} </td>
+                <td>
+                    <button [routerLink]="['../crear', alumno.id]" class="btn btn-success">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <button (click)="eliminar( alumno )" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

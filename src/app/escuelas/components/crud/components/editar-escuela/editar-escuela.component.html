@@ -1,0 +1,287 @@
+
+<div class="text-right">
+
+    <button mat-flat-button color="accent" [routerLink]="['../../index']" *ngIf="escuela?.id" >
+        <i class="fa fa-arrow-left" aria-hidden="true"> Regresar </i>
+      </button>
+
+  <button mat-flat-button color="accent" [routerLink]="['../crear']"  *ngIf="!escuela?.id">
+    <i class="fa fa-arrow-left" aria-hidden="true"> Regresar </i>
+  </button>
+  
+  <button class="mr-3" mat-stroked-button color="primary" (click)="guardar()">
+      <i class="fas fa-save    "> Guardar </i>
+  </button>
+</div>
+
+
+<form [formGroup]="forma" class="example-container" *ngIf="forma" class="m-3">
+
+  <mat-tab-group>
+
+
+      <mat-tab label="Datos generales">
+
+          <!-- Datos Generales -->
+
+          <mat-card class="m-3" fxFlex="0 1 calc(20% - 20px)">
+
+              <mat-card-title>
+                  Datos Generales
+              </mat-card-title>
+              <mat-card-content fxFlex>
+
+
+                  <div>
+                      <mat-form-field>
+                          <mat-label>Nombre de la escuela</mat-label>
+                          <input type="text" matInput formControlName="nombre" placeholder=" EJ: ALBERT EINSTEIN ">
+                          <mat-error *ngIf="getValidity('nombre')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                          <mat-label> C.C.T. </mat-label>
+                          <input type="text" matInput formControlName="cct" placeholder=" EJ: 15EPR4054C   ">
+                          <mat-error *ngIf="getValidity('cct')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                          <mat-label> Turno </mat-label>
+                          <input type="text" matInput formControlName="turno" placeholder=" EJ: VESPERTINO">
+                          <mat-error *ngIf="getValidity('turno')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+                  </div>
+
+                  <div>
+
+                      <mat-form-field>
+                          <mat-label> <i class="fa fa-at" aria-hidden="true"> Correo institucional </i> </mat-label>
+                          <input type="text" matInput formControlName="email" placeholder=" EJ: correo@mail.com ">
+                          <mat-error *ngIf="getValidity('email')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                          <mat-label> <i class="fa fa-phone-alt" aria-hidden="true"> Telefono </i> </mat-label>
+                          <input type="text" matInput formControlName="telefono" placeholder=" EJ: 777-777-777   ">
+                          <mat-error *ngIf="getValidity('telefono')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                          <mat-label> Extension </mat-label>
+                          <input type="text" matInput formControlName="extension" placeholder=" EJ: 548">
+                          <mat-error *ngIf="getValidity('extension')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                  </div>
+
+                  <div>
+
+                      <mat-form-field>
+                          <mat-label>Sostenimiento</mat-label>
+                          <input type="text" matInput formControlName="sostenimiento" placeholder=" EJ: ESTATAL ">
+                          <mat-error *ngIf="getValidity('sostenimiento')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                          <mat-label> Dependencia </mat-label>
+                          <input type="text" matInput formControlName="dependenciaNormativa"
+                              placeholder=" EJ: GOBIERNO EDOMEX   ">
+                          <mat-error *ngIf="getValidity('dependenciaNormativa')">
+                              Campo no valido
+                          </mat-error>
+                      </mat-form-field>
+
+                  </div>
+
+
+
+
+              </mat-card-content>
+
+
+          </mat-card>
+
+          <!-- Domicilio -->
+
+          <mat-card class="m-3" fxFlex="0 1 calc(20% - 20px)">
+
+              <mat-card-title>
+                  Domicilio
+              </mat-card-title>
+              <mat-card-content fxFlex formGroupName="domicilio">
+
+
+                  <mat-form-field>
+                      <mat-label> Estado </mat-label>
+                      <mat-select formControlName="estado" (selectionChange)="cambioEstado()">
+                          <mat-option *ngFor="let estado of sort(estados.response.estado)" [value]="estado">
+                              {{ estado | uppercase }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Municipio </mat-label>
+                      <mat-select formControlName="municipio" (selectionChange)="cambioMunicipio()">
+                          <mat-option *ngFor="let municipio of sort(municipios.response.municipios)"
+                              [value]=" municipio">
+                              {{ municipio | uppercase }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Codigo postal </mat-label>
+                      <mat-select formControlName="codigoPostal" (selectionChange)="cambioCodigoPostal()">
+                          <mat-option *ngFor="let codigoPostal of sort(codigosPostales.response.cp)"
+                              [value]=" codigoPostal">
+                              {{ codigoPostal | uppercase }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                      <mat-label> Codigo postal </mat-label>
+                      <mat-select formControlName="colonia">
+                          <mat-option *ngFor="let colonia of sort(colonias.response.colonia)" [value]=" colonia">
+                              {{ colonia | uppercase }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Numero exterior </mat-label>
+                      <input type="text" matInput formControlName="exterior" placeholder=" EJ: 25">
+                      <mat-error *ngIf="getValidity('domicilio.exterior')">
+                          Campo no valido
+                      </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Numero interior </mat-label>
+                      <input type="text" matInput formControlName="interior" placeholder=" EJ: 25">
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Entre calles </mat-label>
+                      <input type="text" matInput formControlName="entreCalles" placeholder=" EJ: ZAPATA Y JUAREZ">
+                      <mat-error *ngIf="getValidity('domicilio.entreCalles')">
+                          Campo no valido
+                      </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label> Referencia </mat-label>
+                      <input type="text" matInput formControlName="referencia" placeholder=" EJ: TIENDA">
+                      <mat-error *ngIf="getValidity('domicilio.referencia')">
+                          Campo no valido
+                      </mat-error>
+                  </mat-form-field>
+
+
+
+
+              </mat-card-content>
+
+
+          </mat-card>
+
+      </mat-tab>
+
+      <div formArrayName="salones">
+
+      <mat-tab label="Salones">
+
+          <div class="text-right">
+              <button class="m-3" mat-stroked-button color="primary" (click)="addSalon()">
+                  <i class="fas fa-save    ">  Agregar salon  </i>
+              </button>
+          </div>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  >
+
+            
+              <ng-container matColumnDef="index">
+                  <th mat-header-cell *matHeaderCellDef> # </th>
+                  <td mat-cell *matCellDef="let count; let i = index;"> {{ i+1 }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef> Nombre del salon </th>
+                  <td mat-cell *matCellDef="let salon; let i = index" [formGroupName]="i"> 
+                      <mat-form-field>                            
+                          <input type="text" matInput formControlName="nombre">                            
+                      </mat-form-field>
+                      <mat-error *ngIf="getValiditySubForm( i ,'nombre')">
+                          SOLO MAYUSCULAS
+                      </mat-error>
+                  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="capacidad">
+                  <th mat-header-cell *matHeaderCellDef> Capacidad </th>
+                  <td mat-cell *matCellDef="let salon; let i = index" [formGroupName]="i"> 
+                      <mat-form-field>                            
+                          <input type="number" matInput formControlName="capacidad">                            
+                      </mat-form-field>
+                      <mat-error *ngIf="getValiditySubForm( i ,'capacidad')">
+                          SOLO VALORES ENTEROS
+                      </mat-error>
+                  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="estatus">
+                  <th mat-header-cell *matHeaderCellDef> Estatus </th>
+                  <td mat-cell *matCellDef="let salon; let i = index" [formGroupName]="i"> 
+                      <mat-form-field>                            
+                          <input type="text" matInput formControlName="estatus">                            
+                      </mat-form-field>
+                      <mat-error *ngIf="getValiditySubForm( i ,'estatus')">
+                          SOLO MAYUSCULAS
+                      </mat-error>
+                  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="eliminar">
+                  <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+                  <td mat-cell *matCellDef="let count; let i = index;"> 
+                      <button mat-button mat-stroked-button color="warn" (click)="removeSalon(i)">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                  </td>
+              </ng-container>
+
+
+
+              <tr mat-header-row *matHeaderRowDef="     ['index', 'nombre','capacidad','estatus','eliminar'] "></tr>
+              <tr mat-row *matRowDef="let row; columns: ['index', 'nombre','capacidad','estatus','eliminar'];"></tr>
+
+          </table>
+
+      </mat-tab>
+
+      </div>
+
+
+
+  </mat-tab-group>
+
+
+
+
+</form>

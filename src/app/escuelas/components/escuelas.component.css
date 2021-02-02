@@ -1,0 +1,17 @@
+mat-card {
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: lightsteelblue;
+  }
+  
+  .mat-card > :last-child:not(.mat-card-footer),
+  .mat-card-content > :last-child:not(.mat-card-footer) {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mat-form-field {
+    margin-left: 15px;
+  }
+  

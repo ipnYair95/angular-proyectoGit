@@ -1,0 +1,10 @@
+.centerText{
+    text-align: center;
+ }
+
+ 
+
+::ng-deep .my-class .modal-dialog { 
+    max-width: 70%;
+    
+}

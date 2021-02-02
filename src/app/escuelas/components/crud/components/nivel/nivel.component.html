@@ -1,0 +1,190 @@
+<mat-tab-group [(selectedIndex)]="tabIndex"  >
+
+  <!-- TAB -->
+  <mat-tab label="NIVELES" disabled=true >
+
+    <mat-card>
+
+      <mat-card-title class="centerContent" *ngIf=" escuela?.id ">
+        <h1> NIVELES DE {{ escuela.cct }} {{ escuela.nombre }} </h1>
+      </mat-card-title>
+
+      <div class="separacionDerecha">
+        <button mat-raised-button class="btn" (click)="buscarInfoApi()"
+          [ngClass]="{ cerrar:showCard, abrir: !showCard }">
+          <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCard"> {{ titleAdd }} </i>
+          <i class="fa fa-times-circle" aria-hidden="true" *ngIf="showCard"> Cerrar </i>
+        </button>
+      </div>
+
+      <table mat-table [dataSource]="dataSourceNiveles" class="mat-elevation-z8"
+        *ngIf="escuela.nivelEscuela?.length > 0">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="index">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nivel">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> NOMBRE NIVEL </th>
+          <td class="centerContent" mat-cell *matCellDef="let element"> {{element.nombreNivel }} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="eliminar">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> ELIMINAR NIVEL </th>
+          <td class="centerContent" mat-cell *matCellDef="let element">
+            <button class="btn btn-danger" (click)="eliminarNivel( element.id )">
+              <i class="fa fa-times-circle fa-lg" aria-hidden="true"> </i>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ver">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> VER MODALIDADES </th>
+          <td class="centerContent" mat-cell *matCellDef="let element; let i = index">
+            <button class="btn btn-primary" (click)="obtenerInfoModalidades( element.id )">
+              <i class="fa fa-eye fa-lg" aria-hidden="true"> </i>
+            </button>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columnasNiveles"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasNiveles;"></tr>
+      </table>
+
+      <div class="alert alert-primary" role="alert" *ngIf="escuela.nivelEscuela.length == 0">
+        NO EXISTEN NIVELES
+      </div>
+
+
+    </mat-card>
+
+  </mat-tab>
+
+  <!-- TAB -->
+  <mat-tab label="MODALIDAD" disabled=true>
+
+    <mat-card>
+
+      <mat-card-title class="centerContent" *ngIf=" escuela?.id ">
+        <h1> {{  title }}  </h1>
+      </mat-card-title>
+
+      <div class="separacionDerecha">
+        <div>
+          <button  mat-raised-button class="btn btn-success"  (click)="cambioTabAtras()" >
+            <i class="fa fa-arrow-left" aria-hidden="true"> REGRESAR A NIVELES </i>
+          </button>
+        </div>
+        <div>
+          <button mat-raised-button class="btn" (click)="buscarInfoApi()"
+            [ngClass]="{ cerrar:showCard, abrir: !showCard }">
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCard"> {{ titleAdd }} </i>
+            <i class="fa fa-times-circle" aria-hidden="true" *ngIf="showCard"> Cerrar </i>
+          </button>
+        </div>
+      </div>
+
+      <table mat-table [dataSource]="dataSourceModalidad" class="mat-elevation-z8"
+        *ngIf="seleccionNivelEscuela?.modalidades.length > 0">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="index">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="modalidad">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> NOMBRE MODALIDAD </th>
+          <td class="centerContent" mat-cell *matCellDef="let element"> {{element.nombreCarrera }} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="eliminar">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> ELIMINAR NIVEL </th>
+          <td class="centerContent" mat-cell *matCellDef="let element">
+            <button class="btn btn-danger" (click)="eliminarModalidad( element.id )">
+              <i class="fa fa-times-circle fa-lg" aria-hidden="true"> </i>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ver">
+          <th class="centerContent" mat-header-cell *matHeaderCellDef> VER  </th>
+          <td class="centerContent" mat-cell *matCellDef="let element"> {{element.nombreCarrera }} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columnasModalidades"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasModalidades;"></tr>
+      </table>
+
+      <div class="alert alert-primary" role="alert" *ngIf="seleccionNivelEscuela?.modalidades.length == 0">
+        NO EXISTEN NIVELES
+      </div>
+
+
+    </mat-card>
+
+
+  </mat-tab>
+  
+
+
+</mat-tab-group>
+
+<!--  busqueda  -->
+
+<mat-card *ngIf="showCard">
+
+  <div class="centerContent">
+    {{ subTitle }}
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="tieneContenido">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="index">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> No. </th>
+      <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> NOMBRE </th>
+      <td class="centerContent" mat-cell *matCellDef="let element"> 
+        <span *ngIf="tabIndex == 0" > {{ element.nombreNivel }}  </span>
+        <span *ngIf="tabIndex == 1" > {{ element.nombreCarrera }}  </span>
+      </td>      
+    </ng-container>
+    
+
+    <ng-container matColumnDef="agregar">
+      <th class="centerContent" mat-header-cell *matHeaderCellDef> AGREGAR NIVEL </th>
+      <td class="centerContent" mat-cell *matCellDef="let element">
+        <button mat-stroked-button color="accent" *ngIf="tabIndex == 0" (click)="agregarNivel( element.id )">
+          <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>
+        </button>
+        <button mat-stroked-button color="accent" *ngIf="tabIndex == 1" (click)="agregarModalidad( element.id )">
+          <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="columnasApi"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasApi;"></tr>
+  </table>
+
+  <div class="alert alert-primary" role="alert" *ngIf="!tieneContenido">
+    NO EXISTEN NIVELES
+  </div>
+
+
+
+</mat-card>
