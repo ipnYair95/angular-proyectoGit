@@ -13,6 +13,10 @@ export class RelacionEducativoService {
 
   constructor(private http: HttpClient) {}
 
+  public getNiveles( idEscuela: number ) : Observable<NivelEscuela[]> {
+    return this.http.get<NivelEscuela[]>( `${this.URL}/${idEscuela}/listar` );
+  }
+
   public asignarNivel( idEscuela: number, nivelEscuela: NivelEscuela) : Observable<any>{
     return this.http.post<any>( `${this.URL}/${idEscuela}/asignar-nivel`, nivelEscuela );
   }

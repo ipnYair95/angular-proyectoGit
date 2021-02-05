@@ -1,51 +1,218 @@
 <mat-card class="m-3">
-    <mat-card-title class="text-center">
-        Informacion de materias
-    </mat-card-title>
-    <mat-card-content class="mt-3">
+  <mat-card-title class="text-center mb-3">
+    <p style="font-size: xx-large;"> Creacion de grupos </p>
+  </mat-card-title>
+  <mat-card-content class="mt-3">
 
-        <div *ngIf=" niveles.length > 0 " >           
-            <i class="fas fa-layer-group"> 
-                Nivel escolar 
-            <mat-form-field>
-                <mat-label> Seleccione un nivel </mat-label>
-                <mat-select>
-                  <mat-option *ngFor="let nivel of niveles" [value]="nivel.nombreNivel">
-                    {{nivel.nombreNivel}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              </i>
-        </div>
+    <div class="contenedor">
 
-        <div class="ml-3">
-            <i class="fas fa-layer-group">  
-                Carrera                
-            <mat-form-field>                
-                <mat-label> Seleccione la carrera </mat-label>
-                <mat-select>
-                  <mat-option>
-                    afsdf
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </i>
-        </div>
+      <div class="item" *ngIf=" niveles.length > 0 ">
+        <i class="fas fa-layer-group fa-lg">
+          Nivel escolar
+          <mat-form-field>
+            <mat-label> Seleccione un nivel </mat-label>
+            <mat-select (selectionChange)="cambioNivel( $event.value )">
+              <mat-option *ngFor="let nivel of niveles" [value]="nivel.id">
+                {{nivel.nombreNivel}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </i>
+      </div>
 
-        <div class="ml-3">
-            <i class="fas fa-layer-group">  
-                Ciclo Escolar                
-            <mat-form-field>                
-                <mat-label> Seleccione el Ciclo Escolar </mat-label>
-                <mat-select>
-                  <mat-option>
-                    afsdf
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </i>
-        </div>
+      <div class="item" *ngIf="modalidades.length > 0">
+        <i class="fas fa-layer-group fa-lg ml-3">
+          Modalidad
+          <mat-form-field>
+            <mat-label> Seleccione la modalidad </mat-label>
+            <mat-select (selectionChange)="cambioModalidad( $event.value )">
+              <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.id">
+                {{ modalidad.nombreCarrera }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </i>
+      </div>
+
+      <div class="item" *ngIf="ciclosEscolares.length > 0">
+        <i class="fas fa-layer-group fa-lg ml-3">
+          Ciclo Escolar
+          <mat-form-field>
+            <mat-label> Seleccione el Ciclo Escolar </mat-label>
+            <mat-select (selectionChange)="cambioCiclo( $event.value )">
+              <mat-option *ngFor="let cicloEscolar of ciclosEscolares" [value]="cicloEscolar.id">
+                {{ cicloEscolar.nombreCiclo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </i>
+      </div>
+
+    </div>
 
 
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>
+
+
+<mat-card *ngIf="cicloSelected" class="m-2">
+
+  <mat-card-content>
+
+    <div class="contenedor">
+      <div class="item">
+        <h2>
+          <i class="fas fa-calendar-alt fa-lg "> Ciclo Escolar: {{ cicloSelected.nombreCiclo }} </i>
+        </h2>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-content>
+    <div class="contenedor">
+      <div class="item">
+        <i class="fa fa-hourglass-start fa-lg" aria-hidden="true"> Fecha inicio: {{ cicloSelected.fechaInicio }} </i>
+      </div>
+      <div class="espacio">
+
+      </div>
+      <div class="item">
+        <i class="fa fa-hourglass-end fa-lg" aria-hidden="true"> Fecha termino: {{ cicloSelected.fechaTermino }} </i>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <button class="btn btn-primary mt-3" (click)="crearGrupos()" *ngIf="!showGrupos">    
+    <i class="fa fa-plus" aria-hidden="true"> Crear grupo </i>
+  </button>
+
+  <button class="btn btn-danger mt-3" (click)="crearGrupos()" *ngIf="showGrupos">    
+    <i class="fa fa-danger" aria-hidden="true"> Cancelar </i>
+  </button>
+
+  <mat-card-content *ngIf="showGrupos" class="mt-3">
+    <div class="contenedor">
+
+      <form [formGroup]="forma">
+
+        <div class="ml-3 item">
+          <i class="fas fa-keyboard fa-lg">
+            NOMBRE DEL GRUPO
+          <mat-form-field>
+            <mat-label> NOMBRE DEL GRUPO </mat-label>
+            <input type="text" matInput formControlName="nombreGrupo" placeholder=" 1A ">
+            <mat-error *ngIf="getValidity('nombreGrupo')">
+                Campo no valido
+            </mat-error>
+        </mat-form-field>
+      </i>
+        </div>
+
+        <div class="ml-3 item">
+          <i class="fas fa-layer-group fa-lg ml-3">
+            SALONES DISPONIBLES
+            <mat-form-field>
+              <mat-label> SALONES DISPONIBLES </mat-label>
+              <mat-select formControlName="salon">
+                <mat-option *ngFor="let salon of escuela.salones" [value]="salon">
+                  {{ salon.nombre  }}  CAPACIDAD: {{ salon.capacidad }} 
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </i>
+        </div>
+
+        <div class="ml-3 item">
+          <i class="fas fa-layer-group fa-lg ml-3">
+            GRADOS DISPONIBLES
+            <mat-form-field>
+              <mat-label> SELECCIONE EL GRADO </mat-label>
+              <mat-select formControlName="idGrado">
+                <mat-option *ngFor="let grado of cicloSelected.grados" [value]="grado.id">
+                  {{ grado.nombreGrado | uppercase}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </i>
+        </div>
+
+        <div class="item">
+          <button class="btn btn-outline-success ml-3" (click)="crearGrupo()" >
+            <i *ngIf="!accion" class="fas fa-save    ">  Guardar  </i>
+            <i *ngIf="accion" class="fas fa-save    ">  Editar  </i>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </mat-card-content>
+
+
+</mat-card>
+
+<mat-card *ngIf="cicloSelected && gruposCicloActual.length > 0 "  >
+
+ <mat-card-content>
+   <div class="contenedor">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <ng-container matColumnDef="index">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef > NO. </th>
+        <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="grupo">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef> GRUPO </th>
+        <td class="centerContent" mat-cell *matCellDef="let element"> {{ element.nombreGrupo }} </td>
+      </ng-container>   
+
+      <ng-container matColumnDef="grado">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef> GRUPO </th>
+        <td class="centerContent" mat-cell *matCellDef="let element"> {{ element.nombreGrado}} </td>
+      </ng-container>  
+
+      <ng-container matColumnDef="salon">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef> SALON </th>
+        <td class="centerContent" mat-cell *matCellDef="let element"> {{ element.salon.nombre }} </td>
+      </ng-container>  
+       
+
+      <ng-container matColumnDef="editar">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef> EDITAR </th>
+        <td class="centerContent" mat-cell *matCellDef="let element"> 
+          <button class="btn btn-success" (click)="editar( element )" >
+              <i class="fa fa-pencil" aria-hidden="true"> EDITAR </i>
+          </button>
+        </td>
+      </ng-container> 
+
+      <ng-container matColumnDef="eliminar">
+        <th class="centerContent" mat-header-cell *matHeaderCellDef> ELIMINAR </th>
+        <td class="centerContent" mat-cell *matCellDef="let element"> 
+          <button class="btn btn-danger" (click)="eliminar( element )">
+              <i class="fa fa-times" aria-hidden="true"> ELIMINAR </i>
+          </button>
+        </td>
+      </ng-container> 
+     
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+   </div>
+ </mat-card-content>
+  
+
+</mat-card>
+
+<mat-card *ngIf="cicloSelected && gruposCicloActual.length == 0 "  >
+
+  <div class="alert alert-primary" role="alert">
+    <strong> NO EXISTEN GRUPOS PARA EL CICLO {{ cicloSelected?.nombreCiclo }} </strong>
+  </div>
+
+</mat-card>
+
