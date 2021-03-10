@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^8.0.1",
     "bootstrap": "^4.5.0",
     "file-saver": "^2.0.5",
+    "jwt-decode": "^3.1.2",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.12.7",
     "tslib": "^2.0.0",

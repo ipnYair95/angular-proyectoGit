@@ -1,0 +1,55 @@
+<div class="card border-primary mb-3">
+
+    <div class="card-body text-primary">
+
+        <div class="titulo" >
+            <img src="../../../../assets/login/kids.jpg" class="responsiveImg"  >            
+            <p style="margin-top: 10%;" > CREAR CUENTA </p>
+        </div>
+
+        <form [formGroup]="forma" class="login100-form" autocomplete="off" (ngSubmit)="registrar()">
+
+
+            <div class="mt-3" style="text-align: center;">
+                <label> <i class="fa fa-user" aria-hidden="true"> CURP DEL ALUMNO </i> </label>
+                <br>
+                <input  formControlName="nombre"  type="text" >
+            </div>
+
+            <div class="mt-3" style="text-align: center;">
+                <label> <i class="fa fa-key" aria-hidden="true"> PASSWORD </i> </label>
+                <br>
+                <input  formControlName="password"  type="text" >
+            </div>
+
+            <div class="mt-3" style="text-align: center;">
+                <label> <i class="fa fa-key" aria-hidden="true"> EMAIL </i> </label>
+                <br>
+                <input  formControlName="email"  type="text" >
+            </div>
+
+
+            <hr>
+
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="forma.invalid">
+                    <i class="fa fa-sign-in" aria-hidden="true"> Crear cuenta </i>
+                </button>
+            </div>
+
+            <div class="flex-col-c p-t-60" style="text-align: center;">
+                <span class="txt1 p-b-17">
+                    Ya tienes cuenta
+                </span>
+
+                <p></p>
+
+                <a [routerLink]="['/auth']" class="txt2">
+                    Ingresa aqui
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>

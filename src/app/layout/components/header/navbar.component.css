@@ -3,3 +3,8 @@
     left: 50%;
     transform: translatex(-50%);
 }
+
+img{
+    width: 50%;
+    height: 50px;
+}

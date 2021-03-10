@@ -1,0 +1,61 @@
+
+<mat-sidenav-container *ngIf="escuela">
+
+  <mat-sidenav #sidenav mode="push">
+    
+    <mat-toolbar>
+      <span>  </span>
+      <button mat-icon-button class="example-icon" (click)="sidenav.toggle()" >
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+      </button>  
+    </mat-toolbar>
+
+    <mat-nav-list>
+
+      <span *ngFor="let item of menu">
+
+        <span *ngIf=" !item.children || item.children.length === 0 ">
+          <mat-list-item [routerLink]="[ item.route ]">
+            <i [ngClass]=" item.iconName " aria-hidden="true"> {{ item.displayName }} </i>
+          </mat-list-item>
+        </span>
+
+        <mat-accordion *ngIf="item.children && item.children.length > 0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <i [ngClass]=" item.iconName " aria-hidden="true"> {{ item.displayName }} </i>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <span *ngFor="let child of item.children ">
+              <mat-list-item [routerLink]="[ child.route ]">
+                <i [ngClass]=" child.iconName " aria-hidden="true"> {{ child.displayName }} </i>
+              </mat-list-item>
+            </span>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </span>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <div>
+      <button mat-icon-button class="example-icon" (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>  
+    </div>
+    <div style="text-align: center; width: 100%; font-size: xx-large;" >      
+      <span>  <b> C.C.T.: </b> {{  escuela.cct }}      </span>
+      <span>  <b> ESCUELA: </b> {{  escuela.nombre }} </span>
+    </div>
+  </mat-toolbar>
+
+  <router-outlet> </router-outlet>
+
+</mat-sidenav-container> 

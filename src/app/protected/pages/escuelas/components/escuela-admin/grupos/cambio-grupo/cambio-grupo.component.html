@@ -1,0 +1,43 @@
+<mat-card style="overflow-x: auto;">
+    <mat-card-content>
+        <div style="text-align: center; font-size: xx-large;">
+            CAMBIO DE GRUPO
+        </div>
+        <hr>
+        <div style="text-align: center; font-size: large;">
+            <p> <b> ALUMNO </b>: {{ nombreCompleto }} </p>
+            <p> <b> GRUPO </b>: {{ data.grupoActual }} </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+
+            <form [formGroup]="forma" >
+                
+
+                <mat-form-field appearance="fill" style="font-size: large;">
+                    <mat-label> GRUPOS </mat-label>
+                    <mat-select  formControlName="grupo" >
+                        <mat-option *ngFor="let grupo of sort( data.grupos )" [value]="grupo">
+                            {{ grupo.nombreGrupo }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+            </form>
+            
+
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn btn-secondary" (click)="close( false )" style="margin-right: 50px;">
+                <i class="fas fa-window-close"> CANCELAR </i>
+            </button>
+
+            <button class="btn btn-success" (click)="close( true )">
+                <i class="fas fa-save"> GUARDAR </i>
+            </button>
+        </div>
+
+
+    </mat-card-content>
+</mat-card>

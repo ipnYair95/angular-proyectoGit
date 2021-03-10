@@ -1,0 +1,28 @@
+.posicion{
+    position: absolute;
+    left: 75%;
+}
+
+.blocks .btn-outline-primary 
+{
+    padding: 12px 12px;
+    margin: 0 50px;  
+    border-radius: 0;
+}
+
+::ng-deep .my-class .modal-dialog { 
+    max-width: 70%;
+    
+}
+
+.centerText{
+    text-align: center;
+ }
+
+ mat-card {
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: lightsteelblue;
+    margin: 5px;
+  }

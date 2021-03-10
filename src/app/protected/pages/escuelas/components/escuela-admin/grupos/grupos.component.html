@@ -1,0 +1,85 @@
+<app-card-ciclo-actual (onCicloSelected)="cicloSelectedEvent($event)" [title]="title">
+
+</app-card-ciclo-actual>
+
+<mat-card *ngIf="gruposCicloActual">
+    <mat-card-content *ngIf="gruposCicloActual.length > 0">
+        <div class="centerContent">
+            <mat-form-field>
+                <mat-label> <i class="fas fa-user-friends fa-lg"> Seleccione un grupo </i> </mat-label>
+                <mat-select class="select" (selectionChange)="grupoSeleccionadoEvent( $event.value )">
+                    <mat-option *ngFor="let grupo of sortGrupos(gruposCicloActual)" [value]="grupo.id">
+                        {{grupo.nombreGrupo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+
+
+    <mat-card-content *ngIf="alumnosEnGrupo">
+
+        <div class="responsiveTable">
+            <table mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="index">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> NO. </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> NOMBRE </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element">
+                        {{ element.alumno.apeMaterno + " " + element.alumno.apePaterno + " " + element.alumno.nombre }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="curp">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> CURP </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element"> {{ element.alumno.curp }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="baja">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> BAJA </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element"> 
+                        <button class="btn btn-danger" (click)="baja( element ) " >
+                            <i class="fa fa-user-times" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ver">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> VER </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element"> 
+                        <button class="btn btn-primary"  [routerLink]="['editar-alumno', element.alumno.id ]" >
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pdf">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> FICHA DE DATOS </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element"> 
+                        <button class="btn btn-success"  >
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cambio">
+                    <th class="centerContent" mat-header-cell *matHeaderCellDef> CAMBIO DE GRUPO </th>
+                    <td class="centerContent" mat-cell *matCellDef="let element"> 
+                        <button class="btn btn-warning"  (click)="openDialog( element )"  >
+                            <i class="fa fa-exchange-alt" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+            </table>
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

@@ -29,6 +29,10 @@ export class ExternosService {
     return this.http.get<Colonia>( `https://api-sepomex.hckdrk.mx/query/get_colonia_por_cp/${cp}` );
   }
 
+  obternerNoticias(){
+    return this.http.get<any>( `http://newsapi.org/v2/top-headlines?country=mx&apiKey=28064d6daaa74eb6a168b153f7628cce&q=SEP` );
+  }
+
 
 
 }

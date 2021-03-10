@@ -1,0 +1,39 @@
+<div class="card-deck" style="padding: 3% 25%; text-align: center;">
+
+  <div class="card" style="max-width: 18rem;" *ngIf="tipoUsuario != 'escuela' " >
+    <a [routerLink]="['../alumno-module']">
+    <img src="assets/escuela-logo.png" class="card-img-top" alt="..." >
+    <div class="card-body">
+      <h5 class="card-title" style="text-align: center; font-size: x-large;"> MIS DATOS </h5>      
+    </div>   
+    </a>
+  </div>
+
+  <div class="card" style="max-width: 18rem;" *ngIf="tipoUsuario != 'usuario' " >
+    <a [routerLink]="['../alumnos']">
+      <img src="assets/alumno.png" class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center; font-size: x-large;"> ALUMNOS </h5>
+      </div>      
+    </a>
+  </div>
+
+  <div class="card" style="max-width: 18rem;" *ngIf="tipoUsuario != 'usuario' " > 
+    <a [routerLink]="['../nivel-educativo']">
+      <img src="assets/level.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center; font-size: x-large;"> NIVELES EDUCATIVOS </h5>
+      </div>      
+    </a>
+  </div>
+
+  <div class="card" style="max-width: 18rem;" *ngIf="tipoUsuario != 'usuario' " >
+    <a [routerLink]="['../escuela']">
+    <img src="assets/escuela-logo.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align: center; font-size: x-large;"> ESCUELAS </h5>      
+    </div>   
+    </a>
+  </div>
+
+</div>

@@ -1,33 +1,23 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CardsComponent } from './cards/components/cards/cards.component';
-
-import { AlumnosComponent } from './alumnos/components/alumnos.component';
-import { rutasAlumno } from './alumnos/alumno.routes';
-
-import { NivelComponent } from './nivel/components/nivel.component';
-import { rutasNivel } from './nivel/nivel.routes';
-import { rutasEscuela } from './escuelas/escuela.routes';
+import { NgModule, Component } from '@angular/core';
+import { Routes, RouterModule, CanLoad } from '@angular/router'; 
+import { ValidarTokenGuard } from './guards/validar-token.guard';
 
 const routes: Routes = [
-  { 
-    path: 'alumnos', 
-    component: AlumnosComponent, 
-    children: rutasAlumno
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
-  { 
-    path: 'nivel', 
-    component: NivelComponent, 
-    children: rutasNivel
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedModule),
+    canActivate: [ ValidarTokenGuard ],
+    canLoad: [ ValidarTokenGuard ]
   },
-  { 
-    path: 'escuela', 
-    component: NivelComponent, 
-    children: rutasEscuela
-  },
-  {path: 'index', component: CardsComponent },
-  {path: '**', pathMatch: 'full', redirectTo: 'index'  }
-];
+  {
+    path: '**',
+    redirectTo: 'auth'
+  }
+] 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

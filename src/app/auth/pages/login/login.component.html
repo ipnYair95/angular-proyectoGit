@@ -1,0 +1,53 @@
+
+<div class="card border-primary mb-3" >
+    
+    <div class="card-body text-primary">
+
+       
+
+        <div class="titulo" >
+            <img src="../../../../assets/login/kids.jpg" class="responsiveImg"  >            
+            <p style="margin-top: 10%;" > BIENVENIDO </p>
+        </div>
+      
+        <form  [formGroup]="forma" class="login100-form" autocomplete="off" (ngSubmit)="login()">
+
+            
+            <div class="mt-3" style="text-align: center;">
+                <label> <i class="fa fa-user" aria-hidden="true"> USUARIO </i> </label>
+                <br>
+                <input type="text" formControlName="nombre" >
+            </div>
+
+            <div class="mt-3" style="text-align: center;">
+                <label> <i class="fa fa-key" aria-hidden="true"> PASSWORD </i> </label>
+                <br>
+                <input type="password" formControlName="password" >
+            </div>
+
+        
+            <hr>
+
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="forma.invalid" >
+                    <i class="fa fa-sign-in" aria-hidden="true"> Login </i>
+                </button>        
+            </div>
+
+            <div style="text-align: center;" class="mt-3" >
+                <span class="txt1 p-b-17">
+                    ¿No tienes cuenta?
+                </span>
+                
+                <p></p>
+        
+                <a [routerLink]="['/auth/registro']">
+                    Crear una aquí
+                </a>
+            </div>
+        
+        </form>
+        
+    </div>
+  </div>
+

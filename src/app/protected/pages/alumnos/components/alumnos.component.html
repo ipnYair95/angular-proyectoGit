@@ -1,0 +1,16 @@
+<div class="btn-group" role="group">
+    <button class="btn btn-outline-primary" routerLinkActive="active" [routerLink]="['listar']">
+        Listar Todos
+    </button>
+    <button class="btn btn-outline-primary" routerLinkActive="active" [routerLink]="['buscar']">
+        Buscar Alumno
+    </button>
+    <button class="btn btn-outline-primary" routerLinkActive="active" [routerLink]="['crear']">
+        Crear Alumno
+    </button>
+    
+</div>
+ 
+<div class="m-3">
+    <router-outlet> </router-outlet>
+</div>

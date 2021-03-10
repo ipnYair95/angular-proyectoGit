@@ -1,0 +1,168 @@
+
+<div class="m-3" >
+
+<h3 class="text-center"> Niveles educativos </h3>
+
+<div class="text-right mb-3">
+    <button class="btn btn-outline-secondary" (click)="editarNivel()"> 
+        <i class="fa fa-plus" aria-hidden="true"> Agregar nivel </i>
+    </button>
+</div>
+
+<div *ngIf=" niveles.length == 0 ">    
+    <div class="alert alert-primary" role="alert"  >     
+        <strong> No existen niveles </strong>
+    </div>
+</div>
+
+<div class="table-responsive" *ngIf=" niveles.length > 0 ">
+    <table class="table centerText table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th> # </th>
+                <th> Nivel </th>
+                <th> Accion </th>
+                <th> Ver carreras </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let nivel of niveles; let i = index">
+                <td> {{ i+1 }} </td>
+                <td> {{ nivel.nombreNivel }} </td>
+                <td> 
+                    <button class="btn btn-success" (click)="editarNivel( i )">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="verCarreras( i )">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--  carreras  -->
+
+<div class="table-responsive"  *ngIf=" indiceNivel != -1 && niveles[indiceNivel].carreras.length > 0 ">
+    <hr>
+    <h3 class="text-center"> Carreras del nivel {{ niveles[indiceNivel].nombreNivel }} </h3>
+    
+    <div class="text-right mb-3">
+        <button class="btn btn-outline-secondary" (click)="editarCarrera(  niveles[indiceNivel].id )"> 
+            <i class="fa fa-plus" aria-hidden="true"> Agregar carrera </i>
+        </button>
+    </div>
+
+    <table class="table centerText table-bordered">        
+        <thead class="thead-dark">
+            <tr>
+                <th> # </th>
+                <th> Carrera </th>
+                <th> Editar carrera </th>
+                <th> Ver Ciclos Escolares </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let carrera of niveles[indiceNivel].carreras; let i = index;">
+                <td> {{ i+1 }} </td>
+                <td> {{ carrera.nombreCarrera }} </td>
+                <td> 
+                    <button class="btn btn-success" (click)="editarCarrera( niveles[indiceNivel].id , carrera )">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="verCiclos( i )">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf=" indiceNivel != -1 && niveles[indiceNivel].carreras.length == 0 ">  
+    <h3 class="text-center"> Carreras del nivel {{ niveles[indiceNivel].nombreNivel }} </h3>
+    <div class="text-right mb-3">
+        <button class="btn btn-outline-secondary" (click)="editarCarrera( niveles[indiceNivel].id )"> 
+            <i class="fa fa-plus" aria-hidden="true"> Agregar carrera </i>
+        </button>
+    </div>
+    <div class="alert alert-primary" role="alert"  >     
+        <strong> No existen carreras para este nivel </strong>
+    </div>
+</div>
+
+
+<!--  ciclos escolares  -->
+
+<div class="table-responsive"  *ngIf=" (indiceCarrera != -1 && indiceNivel != -1 ) && niveles[indiceNivel].carreras[indiceCarrera].ciclosEscolares.length > 0 ">
+    <hr>
+        <h3 class="text-center"> Ciclos Escolares de la carrera {{ niveles[indiceNivel].carreras[indiceCarrera].nombreCarrera }} </h3>
+    
+    <div class="text-right mb-3">
+        <button class="btn btn-outline-secondary" (click)="editarCiclo( niveles[indiceNivel].carreras[indiceCarrera].id )"  > 
+            <i class="fa fa-plus" aria-hidden="true"> Agregar ciclo escolar </i>
+        </button>
+    </div>
+
+    <table class="table centerText table-bordered">        
+        <thead class="thead-dark">
+            <tr>
+                <th> # </th>
+                <th> Ciclo Escolar </th>
+                <th> Fecha de Inicio </th>
+                <th> Fecha de Termino </th>
+                <th> Editar ciclo </th>
+                <th> Periodos academicos o grados </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let cicloEscolar of niveles[indiceNivel].carreras[indiceCarrera].ciclosEscolares; let i = index;">
+                <td> {{ i+1 }} </td>
+                <td> {{  cicloEscolar.nombreCiclo }} </td>
+                <td> 
+                    {{ cicloEscolar.fechaInicio  | date: 'fullDate' }}
+                </td>
+                <td>
+                    {{ cicloEscolar.fechaTermino | date: 'fullDate'  }}
+                </td> 
+                <td> 
+                    <button class="btn btn-success" (click)="editarCiclo( niveles[indiceNivel].carreras[indiceCarrera].id , cicloEscolar )">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" [routerLink]="[
+                            'grado',   
+                            niveles[indiceNivel].nombreNivel, niveles[indiceNivel].carreras[indiceCarrera].nombreCarrera , cicloEscolar.id
+                         ]"
+                    >
+                        <i class="fa fa-sitemap" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf=" (indiceCarrera != -1 && indiceNivel != -1 ) && niveles[indiceNivel].carreras[indiceCarrera].ciclosEscolares.length == 0 ">  
+    <h3 class="text-center"> Ciclos Escolares de la carrera {{ niveles[indiceNivel].carreras[indiceCarrera].nombreCarrera }} </h3>
+    <div class="text-right mb-3">
+        <button class="btn btn-outline-secondary" (click)="editarCiclo( niveles[indiceNivel].carreras[indiceCarrera].id )"  > 
+            <i class="fa fa-plus" aria-hidden="true"> Agregar ciclo escolar </i>
+        </button>
+    </div>
+    <div class="alert alert-primary" role="alert"  >     
+        <strong> No existen ciclos escolares para esta carrera </strong>
+    </div>
+</div>
+
+</div>
+

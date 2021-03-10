@@ -1,0 +1,34 @@
+input {
+  width: 100%;
+  text-align: center;
+  border-radius: 25px;
+  border: 0px;
+  border-bottom: 1px solid darkblue;
+  padding: 5px;
+  background: floralwhite;
+  font-family: "Font Awesome 5 Pro";
+  font-size: large;
+}
+
+.card {
+  border-radius: 25px;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 5px;
+}
+
+.titulo {
+  text-align: center;
+  font-size: xx-large;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+
+.responsiveImg {
+  width: 50%;
+  max-width: 400px;
+  height: auto;
+  margin-top: -35%;
+  border-radius: 50%;
+  border-top: 3px solid darkblue;
+}

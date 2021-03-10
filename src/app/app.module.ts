@@ -3,44 +3,37 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './layout/components/header/navbar.component';
-import { AlumnosModule } from './alumnos/alumnos.module';
-import { CardsModule } from './cards/cards.module';
+import { NavbarComponent } from './layout/components/header/navbar.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NivelModule } from './nivel/nivel.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { FooterComponent } from './layout/components/footer/footer.component';
 
-import localeEs from '@angular/common/locales/es';
-import { EscuelasModule } from './escuelas/escuelas.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './escuelas/material/material.module';
+import localeEs from '@angular/common/locales/es'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MaterialModule } from './ayudas/material/material.module';
+import { ProtectedModule } from './protected/protected.module';
+import { LayoutModule } from './layout/layout.module';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AlumnosModule,
-    NivelModule,
-    CardsModule,
-    EscuelasModule,
+    AppRoutingModule,   
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MaterialModule
+    ProtectedModule,
+    LayoutModule
   ],
   exports:[
     AppRoutingModule,

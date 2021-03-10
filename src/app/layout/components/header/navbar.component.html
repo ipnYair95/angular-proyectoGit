@@ -1,18 +1,30 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<nav class="navbar  bg-dark navbar-dark fixed-top">
   <div class="container">
-    <a [routerLink]="[ '/index']">
-      <img src="assets/escuela.png" width="60" height="60">
-    </a>    
-    <div class="collapse navbar-collapse">
+
+    <div style="width: 30%;" >
+      <img src="assets/encabezado/logofooter.png">
+    </div>
+
+   <div style="width: 25%;">
+
+   </div>
+
+    <div *ngIf=" authService.isToken " style="display: flex; width: 15%; text-align: right;"  >
+
+      <button [routerLink]="['/dashboard/index']" class="btn btn-outline-primary">
+        <i class="fa fa-home" aria-hidden="true"> Home </i>
+      </button>
+
+      <button class="btn btn-outline-danger ml-3" (click)="logout()">
+        <i class="fa fa-sign-out-alt" aria-hidden="true"> Salir </i>
+      </button>
 
     </div>
-    <div class="collapse navbar-collapse">
-      <h3 class="navbar-brand"> {{ titulo }} </h3>
-    </div>   
-    
-    <button [routerLink]="['/index']" class="btn btn-outline-primary"> 
-      <i class="fa fa-home" aria-hidden="true"> Home </i>
-    </button>
-    
+
+    <div style="width: 30%; text-align: right;" >
+      <img src="assets/encabezado/sep.png">
+    </div>
+
+
   </div>
 </nav>

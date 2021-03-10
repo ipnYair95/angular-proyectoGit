@@ -23,6 +23,27 @@ export class Notificaciones{
                 Swal.fire('Exito', texto ,'success').then( then => window.location.reload() )
             break;
 
+            case Opcion.confirma:
+
+                let valor = Swal.fire({
+                    title: '¿Confirmar?',
+                    text: `${texto}`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      return 1;
+                    }
+                    
+                    return 0;
+                  })
+
+                return valor;
+            break;
+
         }
 
     }
@@ -33,6 +54,7 @@ export enum Opcion{
     error = 'error',
     errorCustom = 'errorCustom',
     exitoCustom = 'exitoCustom',
-    exitoCustomReload = 'exitoCustomReload'
+    exitoCustomReload = 'exitoCustomReload',
+    confirma = 'confirma'
 
 }

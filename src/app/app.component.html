@@ -1,14 +1,16 @@
-<app-navbar></app-navbar>
-<br>
-<br>
-<br>
-<div id="page-container">
-   <div id="content-wrap">
-      <div class="container-fluid mt-3">
-         <router-outlet></router-outlet>
-      </div>
-      <footer id="footer">
-         <app-footer></app-footer>
-      </footer>
-   </div>
+
+<div style="background: url('../assets/login/6.jpg') no-repeat; background-size: 100% 100%; " >
+    <div class="page-wrapper">
+       <div class="sticky-header">
+           <app-navbar></app-navbar>
+       </div>
+       <div class="content-wrapper">
+           <div class="content mt-3">
+               <router-outlet></router-outlet>
+           </div>
+           <div class="footer mt-3">
+               <app-footer></app-footer> 
+           </div>
+       </div>
+    </div>
 </div>

@@ -1,0 +1,181 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    <i class="fas fa-user-friends"> {{ titulo }} </i>
+  </h4>
+  <button class="btn btn-danger" type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+    <i class="fa fa-times-circle" aria-hidden="true"> </i>
+  </button>
+</div>
+<div class="modal-body">
+  <form autocomplete="off" [formGroup]="forma">
+    <!-- ****** GENERALES ******* -->
+
+    <div>
+      <div class="form-row">
+        <h2 class="mb-3">Generales</h2>
+      </div>
+      <div class="form-row">
+  
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Nombre</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre"/>
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('nombre')">
+            Campo requerido
+          </div>
+        </div>
+  
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Apellido Paterno</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Apellido Paterno" formControlName="apePaterno" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('apePaterno')">
+            Campo requerido
+          </div>
+        </div>
+  
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Apellido Materno</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Apellido Materno" formControlName="apeMaterno" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('apeMaterno')">
+            Campo requerido
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> CURP</span>
+            </div>
+            <input type="text" class="form-control" placeholder="CURP" formControlName="curp" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('curp')">
+            FORMATO NO VALIDO
+          </div>
+        </div>
+  
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Nacimiento</span>
+            </div>
+            <input disabled type="text" [value]="nacimiento" class="form-control" />
+          </div>
+        </div>
+  
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Sexo</span>
+            </div>
+            <input disabled type="text" [value]="sexo" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ****** ESPECIFICOS ******* -->
+
+    <div>
+      <div class="form-row">
+        <h2 class="mb-3">Especificos</h2>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Parentesco</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Parentesco" formControlName="parentesco" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('parentesco')">
+            Campo requerido
+          </div>
+        </div>
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Estado civil</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Estado civil" formControlName="estadoCivil" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('estadoCivil')">
+            Campo requerido
+          </div>
+        </div>
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Ocupacion</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Ocupacion" formControlName="ocupacion"/>
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('ocupacion')">
+            Campo requerido
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="form-row">
+        <h2 class="mb-3">Contacto</h2>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Email</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email" formControlName="email" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('email')">
+            Formato invalido
+          </div>
+        </div>
+        <div class="form-group col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Telefono</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Telefono" formControlName="telefono" />
+          </div>
+          <div class="alert alert-primary" *ngIf="campoInvalido('telefono')">
+            Ej: 555-555
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <div class="form-check">
+          <input class="form-check-input" [checked]="tutor.esResponsable"  type="checkbox" (change)="marcarResponsable($event)" />
+          <label class="form-check-label" for="defaultCheck1">
+            Marcar como tutor a cargo
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <button (click)="passBack()" type="button" class="btn btn-success w-100">
+      <i class="fas fa-save    "> Guardar </i>
+    </button>
+  </form>
+
+  <!-- <button (click)="passBack()" type="submit" class="btn btn-primary w-100">Pass back</button> -->
+</div>

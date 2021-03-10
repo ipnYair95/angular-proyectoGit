@@ -1,0 +1,56 @@
+<mat-card class="m-3">
+    <mat-card-title class="text-center mb-3">
+      <p style="font-size: xx-large;"> {{ title }} </p>
+    </mat-card-title>
+    <mat-card-content class="mt-3">
+  
+      <div class="contenedor">
+  
+        <div class="item" *ngIf=" niveles.length > 0 ">
+          <i class="fas fa-layer-group fa-lg">
+            Nivel escolar
+            <mat-form-field>
+              <mat-label> Seleccione un nivel </mat-label>
+              <mat-select (selectionChange)="cambioNivel( $event.value )">
+                <mat-option *ngFor="let nivel of niveles" [value]="nivel.id">
+                  {{nivel.nombreNivel}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </i>
+        </div>
+  
+        <div class="item" *ngIf="modalidades.length > 0">
+          <i class="fas fa-layer-group fa-lg ml-3">
+            Modalidad
+            <mat-form-field>
+              <mat-label> Seleccione la modalidad </mat-label>
+              <mat-select (selectionChange)="cambioModalidad( $event.value )">
+                <mat-option *ngFor="let modalidad of modalidades" [value]="modalidad.id">
+                  {{ modalidad.nombreCarrera }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </i>
+        </div>
+  
+        <div class="item" *ngIf="ciclosEscolares.length > 0">
+          <i class="fas fa-layer-group fa-lg ml-3">
+            Ciclo Escolar
+            <mat-form-field>
+              <mat-label> Seleccione el Ciclo Escolar </mat-label>
+              <mat-select (selectionChange)="cambioCiclo( $event.value )">
+                <mat-option *ngFor="let cicloEscolar of ciclosEscolares" [value]="cicloEscolar.id">
+                  {{ cicloEscolar.nombreCiclo }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </i>
+        </div>
+  
+      </div>
+  
+  
+    </mat-card-content>
+  </mat-card>
+   
