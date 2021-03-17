@@ -100,9 +100,14 @@ export class AltaAlumnosComponent implements OnInit {
 
     if (this.forma.valid) {
 
-      this.alumnoService.buscarPorCurp(this.forma.get('curp').value).subscribe((resp: Alumno) => {
+      this.alumnoService.buscarPorCurp(this.forma.get('curp').value).subscribe((resp ) => {
 
-        console.log(resp);
+        if( resp == false ){
+          Notificaciones.enviarNotificacion( Opcion.errorCustom, `Alumno no encontrado` );
+          return;
+        }
+
+        //console.log(resp);
         Notificaciones.enviarNotificacion(Opcion.exitoCustom, `Alumno encontrado`);
         this.alumno = resp;
         const nombreCompleto = resp.apePaterno.toUpperCase() + " " + resp.apeMaterno.toUpperCase() + " " + resp.nombre.toUpperCase();

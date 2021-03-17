@@ -1,4 +1,8 @@
-<mat-card class="m-3">
+<div class="alert alert-primary" role="alert" *ngIf="nivelEscuela?.length == 0" >
+  <strong> LA ESCUELA NO TIENE NIVELES ASIGNADOS </strong>
+</div>
+
+<mat-card class="m-3" *ngIf="nivelEscuela?.length != 0" >
     <mat-card-title class="text-center mb-3">
       <p style="font-size: xx-large;"> {{ title }} </p>
     </mat-card-title>

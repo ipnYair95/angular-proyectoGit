@@ -1,7 +1,7 @@
 import { Grupo } from './grupos';
 import { Cct } from './cct';
 export class Salon{
-    id: string;
+    id: number;
     nombre: string;
     capacidad: string;
     estatus: string;

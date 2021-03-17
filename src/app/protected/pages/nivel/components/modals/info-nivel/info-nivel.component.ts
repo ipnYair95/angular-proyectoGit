@@ -122,7 +122,7 @@ export class InfoNivelComponent implements OnInit {
         Swal.fire('Error', 'Ha ocurrido un error', 'error');
       });
 
-      this.router.navigate(['/nivel/listar']);
+      //this.router.navigate(['/nivel/listar']);
 
   }
 

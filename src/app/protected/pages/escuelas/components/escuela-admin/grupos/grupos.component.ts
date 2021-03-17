@@ -10,6 +10,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Notificaciones, Opcion } from 'src/app/ayudas/notificaciones';
 import { MatDialog } from '@angular/material/dialog';
 import { CambioGrupoComponent } from './cambio-grupo/cambio-grupo.component';
+import { AlumnoService } from '../../../../alumnos/services/alumno.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-grupos',
@@ -38,7 +40,8 @@ export class GruposComponent implements OnInit {
     private escuelaService: EscuelaService,
     private router: Router,
     private historialService: HistorialService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private as: AlumnoService
     ) {
     if (this.escuelaService.validaUsuario()) {
 
@@ -105,6 +108,12 @@ export class GruposComponent implements OnInit {
     });
 
 
+  }
+
+  documento( idAlumno: number ){
+    this.as.descargarFichaAlumno( idAlumno.toString() ).subscribe( resp =>{      
+      saveAs( new Blob([resp], {type:  'application/pdf'  } ) , 'alumnoInformacion' )
+    });
   }
 
   openDialog( alumnoSeleccionado: Historial ) {

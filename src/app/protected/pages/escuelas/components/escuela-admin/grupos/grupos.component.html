@@ -60,7 +60,7 @@
                 <ng-container matColumnDef="pdf">
                     <th class="centerContent" mat-header-cell *matHeaderCellDef> FICHA DE DATOS </th>
                     <td class="centerContent" mat-cell *matCellDef="let element"> 
-                        <button class="btn btn-success"  >
+                        <button class="btn btn-success"  (click)=" documento(element.alumno.id )" >
                             <i class="fa fa-id-card" aria-hidden="true"></i>
                         </button>
                     </td>

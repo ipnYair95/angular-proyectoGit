@@ -1,7 +1,7 @@
 {
     "nombre": "Mateo",
     "apePaterno": "Arvizu",    
-    "apenMaterno": "Sanchez",
+    "apeMaterno": "Sanchez",
     "curp": "AISM130609HMCRNTA6",
     "fechaNacimiento": "2013-06-09",
     "sexo": "Masculino",
@@ -22,7 +22,7 @@
         {
             "nombre": "Edgar",
             "apePaterno": "Marin",
-            "apenMaterno": "Alavez",
+            "apeMaterno": "Alavez",
             "edoCivil": "Casado",
             "curp": "MAAE950608HMCRLD00",
             "fechaNacimiento": "1995-06-08",
@@ -41,7 +41,7 @@
 	{
 		"nombre": "Mateo",
 		"apePaterno": "Arvizu",    
-		"apenMaterno": "Sanchez",
+		"apeMaterno": "Sanchez",
 		"curp": "AISM130609HMCRNTA6",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -53,7 +53,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -69,7 +69,7 @@
 	{
 		"nombre": "EMILY YUNUHEM",
 		"apePaterno": "AYALA",    
-		"apenMaterno": "REYES",
+		"apeMaterno": "REYES",
 		"curp": "AARE130826MMCYYMA4",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -81,7 +81,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -97,7 +97,7 @@
 	{
 		"nombre": "AMAIRANY",
 		"apePaterno": "BARRAZA",    
-		"apenMaterno": "ROMERO",
+		"apeMaterno": "ROMERO",
 		"curp": "BARA130714MMCRMMA2",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -109,7 +109,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -125,7 +125,7 @@
 	{
 		"nombre": "ARIZBETH JAQUELINE",
 		"apePaterno": "BAUTISTA",    
-		"apenMaterno": "REGALADO",
+		"apeMaterno": "REGALADO",
 		"curp": "BARA131214MMCTGRA1",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -137,7 +137,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -153,7 +153,7 @@
 	{
 		"nombre": "JAVIER ALBERTO",
 		"apePaterno": "CAMIRO",    
-		"apenMaterno": "CASTILLO",
+		"apeMaterno": "CASTILLO",
 		"curp": "CACJ130704HMCMSVA7",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -165,7 +165,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -181,7 +181,7 @@
 	{
 		"nombre": "SANTIAGO",
 		"apePaterno": "CAMPOS",    
-		"apenMaterno": "SALDAÑA",
+		"apeMaterno": "SALDAÑA",
 		"curp": "CASS130810HMCMLNA9",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -193,7 +193,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -209,7 +209,7 @@
 	{
 		"nombre": "MARCO ANTONIO",
 		"apePaterno": "CUEVAS",    
-		"apenMaterno": "MORALES",
+		"apeMaterno": "MORALES",
 		"curp": "CUMM130425HMCVRRA5",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -221,7 +221,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -237,7 +237,7 @@
 	{
 		"nombre": "CESAR EDEN",
 		"apePaterno": "ENRIQUEZ",    
-		"apenMaterno": "ANTONIO",
+		"apeMaterno": "ANTONIO",
 		"curp": "EIAC130731HMCNNSA7",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -249,7 +249,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -265,7 +265,7 @@
 	{
 		"nombre": "JESUS ISAI",
 		"apePaterno": "ESCAMILLA",    
-		"apenMaterno": "GONZALEZ",
+		"apeMaterno": "GONZALEZ",
 		"curp": "EAGJ130130HMCSNSA7",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -277,7 +277,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -293,7 +293,7 @@
 	{
 		"nombre": "MARIANA NAHOMI",
 		"apePaterno": "FRANCISCO",    
-		"apenMaterno": "MENDEZ",
+		"apeMaterno": "MENDEZ",
 		"curp": "FAMM130828MMCRNRA7",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -305,7 +305,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -321,7 +321,7 @@
 	{
 		"nombre": "BIANCA ZOE",
 		"apePaterno": "GARCIA",    
-		"apenMaterno": "ALONSO",
+		"apeMaterno": "ALONSO",
 		"curp": "GAAB130112MMCRLNA0",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -333,7 +333,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -349,7 +349,7 @@
 	{
 		"nombre": "JOSHUA SEBASTIAN",
 		"apePaterno": "GIRON",    
-		"apenMaterno": "TAVERA",
+		"apeMaterno": "TAVERA",
 		"curp": "GITJ130418HMCRVSA5",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -361,7 +361,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -377,7 +377,7 @@
 	{
 		"nombre": "ALLISON ANAHY",
 		"apePaterno": "GOMEZ",    
-		"apenMaterno": "LAVARIEGA",
+		"apeMaterno": "LAVARIEGA",
 		"curp": "GOLA130216MMCMVLA9",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -389,7 +389,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -405,7 +405,7 @@
 	{
 		"nombre": "SEBASTIAN ALEJANDRO",
 		"apePaterno": "GOMEZ",    
-		"apenMaterno": "MERINO",
+		"apeMaterno": "MERINO",
 		"curp": "GOMS131010HMCMRBA8",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -417,7 +417,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",
@@ -433,7 +433,7 @@
 	{
 		"nombre": "EVELYN",
 		"apePaterno": "GONZALEZ",    
-		"apenMaterno": "ALVAREZ",
+		"apeMaterno": "ALVAREZ",
 		"curp": "GOAE130719MMCNLVA9",
 		"fechaNacimiento": "2013-06-09",
 		"sexo": "Masculino",
@@ -445,7 +445,7 @@
 			{
 				"nombre": "Edgar",
 				"apePaterno": "Marin",
-				"apenMaterno": "Alavez",
+				"apeMaterno": "Alavez",
 				"edoCivil": "Casado",
 				"curp": "MAAE950608HMCRLD00",
 				"fechaNacimiento": "1995-06-08",

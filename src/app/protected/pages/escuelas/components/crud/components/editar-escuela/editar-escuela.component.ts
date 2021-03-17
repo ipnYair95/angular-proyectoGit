@@ -53,6 +53,7 @@ export class EditarEscuelaComponent implements OnInit {
 
       this.cctService.buscarPodId(id).subscribe(resp => {
         this.escuela = resp;
+        console.log(resp);
         this.llenarSelect();
       }, err => Notificaciones.enviarNotificacion(Opcion.errorCustom, "No existe la escuela asociada"))
 
@@ -237,9 +238,11 @@ export class EditarEscuelaComponent implements OnInit {
 
   guardar() {
 
-    if (true) {
+    if ( this.forma.valid ) {
 
       this.escuela = this.forma.value;
+
+      console.log(this.escuela);
 
       if (this.escuela.id != undefined) {
         this.cctService.editar(this.escuela).subscribe(resp => {
@@ -258,6 +261,22 @@ export class EditarEscuelaComponent implements OnInit {
 
       }
     }
+    else{      
+      this.errorCampos();
+    }
+  }
+
+  errorCampos() {
+    Swal.fire('Error', 'Existen campos incorrectos', 'error');
+    return Object.values(this.forma.controls).forEach((control) => {
+      if (control instanceof FormGroup) {
+        Object.values(control.controls).forEach((control) =>
+          control.markAsTouched()
+        );
+      } else {
+        control.markAsTouched();
+      }
+    });
   }
 
   llenarSelect() {

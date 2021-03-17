@@ -272,7 +272,12 @@ export class CrearAlumnoComponent implements OnInit {
       peticion.subscribe(
         (resp) => {
           Swal.fire('Exito', `Alumno ${this.accion} con exito`, 'success');
-          this.router.navigateByUrl('../listar');
+          if( this.alumno.id != undefined ){
+            this.router.navigate(['../../listar'], {relativeTo: this.route});
+          }else
+          {
+            this.router.navigate(['../listar'], {relativeTo: this.route});
+          }
         },
         (err) => {
           switch (err.status) {

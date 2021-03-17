@@ -56,8 +56,8 @@ export class RegisterComponent {
           Notificaciones.enviarNotificacion(Opcion.exitoCustom, "Cuenta creada");
           this.router.navigateByUrl('/dashboard');
         } else {
-          console.log(ok);
-          Notificaciones.enviarNotificacion(Opcion.errorCustom, ` ${ok} `);
+          //console.log(ok);
+          Notificaciones.enviarNotificacion(Opcion.errorCustom, ` Usuario ya registrado o sin CURP existente `);
         }
 
       });
